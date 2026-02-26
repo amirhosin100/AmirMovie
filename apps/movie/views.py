@@ -23,13 +23,13 @@ class GenreRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
 
 
 class MovieListCreateView(generics.ListCreateAPIView):
-    queryset = Movie.objects.all()
+    queryset = Movie.objects.prefetch_related('genres')
     serializer_class = MovieSerializer
     permissions_classes = (IsAdminOrReadOnly,)
 
 
 class MovieRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Movie.objects.all()
+    queryset = Movie.objects.prefetch_related('genres')
     serializer_class = MovieSerializer
     permissions_classes = (IsAdminOrReadOnly,)
     lookup_url_kwarg = 'movie_id'
