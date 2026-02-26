@@ -35,7 +35,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # project apps
     'apps.user.apps.UserConfig',
+    'apps.movie.apps.MovieConfig',
     # api
     'rest_framework',
     'rest_framework_simplejwt',
@@ -53,7 +55,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'silk.middleware.SilkyMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -136,7 +137,7 @@ REST_FRAMEWORK = {
 }
 
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(weeks=5),  # for development
+    'ACCESS_TOKEN_LIFETIME': timedelta(weeks=5), # for development
     'REFRESH_TOKEN_LIFETIME': timedelta(weeks=5),
 }
 
