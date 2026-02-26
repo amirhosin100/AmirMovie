@@ -35,12 +35,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # project apps
     'apps.user.apps.UserConfig',
+    'apps.movie.apps.MovieConfig',
     # api
     'rest_framework',
     'rest_framework_simplejwt',
     'drf_spectacular',
     'drf_spectacular_sidecar',
+    # testing
+    'silk',
 ]
 
 MIDDLEWARE = [
@@ -51,6 +55,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+     'silk.middleware.SilkyMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'
