@@ -4,6 +4,8 @@ URL configuration for config project.
 
 from django.contrib import admin
 from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
 
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
@@ -24,6 +26,8 @@ api_urlpatterns = [
     path('schema/', SpectacularAPIView.as_view(), name='schema'),
     path('schema/swagger-ui/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
     path('schema/redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
+
+    path('user/',include('apps.user.urls.user_urls',namespace='normal_user')),
 ]
 
 urlpatterns = [
@@ -31,3 +35,6 @@ urlpatterns = [
 
     path('api/', include(api_urlpatterns)),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
